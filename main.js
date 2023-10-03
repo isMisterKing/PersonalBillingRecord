@@ -1,6 +1,7 @@
 import App from './App'
 
-import './global/globalStyle.css';
+import './src/common/globalStyle.css'
+import './src/common/uniStyle.css'
 
 // #ifndef VUE3
 import Vue from 'vue'

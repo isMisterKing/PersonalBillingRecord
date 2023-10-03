@@ -1,18 +1,10 @@
 <template>
 	<view class="title">
-		<view class="tab">
-			<span
-				v-for="(item, index) in ['支出', '收入']"
-				:class="{ active: isActive == index }"
-				@click="isActive = index"
-			>
-				{{ item }}
-			</span>
-		</view>
+		<tab-change :list="tabList" @change="changeTab"></tab-change>
 		<i class="iconfont icon-chahao"></i>
 	</view>
 	<view class="calendar card">
-		<uni-calendar lunar="" @change=""></uni-calendar>
+		<uni-calendar :lunar="false" @change="clickCalendar" :selected="calendarSelected"></uni-calendar>
 	</view>
 	<view class="record card">
 		<scroll-view class="record-list" scroll-y="true" scroll-top="100">
@@ -22,21 +14,60 @@
 </template>
 
 <script>
-	import * as OPTION from '../../global/option.js'
-	import recordItem from '../../components/recordItem.vue'
+	import * as OPTION from '../../src/common/option.js'
+	import recordItem from '../../src/components/recordItem.vue'
+	import tabChange from '../../src/components/tabChange.vue'
 	
 	export default {
 		components: {
-			recordItem
+			recordItem,
+			tabChange
 		},
 		data() {
 			return {
-				isActive: 0,
 				recordList: OPTION.recordList,
+				calendarSelected: [
+					{
+						date: '2023-10-06',
+						info: '0'
+					},
+					{
+						date: '2023-10-07',
+						info: '0'
+					},
+					{
+						date: '2023-10-08',
+						info: '0'
+					},
+					{
+						date: '2023-10-20',
+						info: '0'
+					},
+				],
+				tabList: [
+					{
+						label: '支出',
+						value: '000'
+					},
+					{
+						label: '收入',
+						value: '111'
+					},
+				],
 			}
 		},
 		methods: {
-			
+			clickCalendar (val) {
+				const obj = {
+					date: val.fulldate,
+					info: '0'
+				}
+				this.calendarSelected.push(obj)
+				console.log(this.calendarSelected);
+			},
+			changeTab (val) {
+				console.log(val);
+			}
 		},
 		onLoad (option) {
 			console.log(option);
@@ -46,7 +77,8 @@
 
 <style lang="less">
 	page {
-		background-color: #f8f8f8;
+		background-image: unset;
+		background-color: var(--background-color);
 		height: 100%;
 	}
 	.title {
@@ -54,25 +86,6 @@
 		justify-content: center;
 		position: relative;
 		margin-bottom: 30rpx;
-		.tab {
-			background-color: #f4f4f4;
-			display: flex;
-			justify-content: space-around;
-			align-items: center;
-			padding: 10rpx;
-			font-size: 30rpx;
-			border-radius: 10rpx;
-			span {
-				padding: 10rpx 30rpx;
-				border-radius: 10rpx;
-				color: var(--font-assist-color);
-			}
-			.active {
-				background-color: #FFF;
-				font-weight: 700;
-				color: var(--font-title-color);
-			}
-		}
 		i {
 			position: absolute;
 			top: 50%;
@@ -81,7 +94,7 @@
 		}
 	}
 	.calendar {
-		height: 600rpx;
+		height: 800rpx;
 		background-color: #FFF;
 	}
 	.record {

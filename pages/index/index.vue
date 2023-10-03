@@ -39,7 +39,7 @@
 		</view>
 	</view>
 	<!-- 提示 -->
-	<view class="home-tips">
+	<view class="home-tips" ref="homeTips">
 		<view class="tips-left">
 			<view class="tips-text">
 				<span>本月预算剩余：60%</span>
@@ -66,13 +66,12 @@
 		<scroll-view class="record-list" scroll-y="true" scroll-top="100">
 			<record-item v-for="item in recordList" :option="item"></record-item>
 		</scroll-view>
-		<uni-calendar lunar="" @change=""></uni-calendar>
 	</view>
 </template>
 
 <script>
-	import * as OPTION from '../../global/option.js'
-	import recordItem from '../../components/recordItem.vue'
+	import * as OPTION from '../../src/common/option.js'
+	import recordItem from '../../src/components/recordItem.vue'
 	
 	export default {
 		components: {
@@ -94,6 +93,12 @@
 			}
 		},
 		onLoad() {
+			this.$nextTick(() => {
+				const dom = document.querySelector('.home-tips')
+				dom.style.setProperty('--home-tip-line', '60%')
+			})
+		},
+		onShow () {
 			
 		},
 		methods: {
@@ -110,9 +115,6 @@
 </script>
 
 <style lang="less">
-	page {
-		background-image: linear-gradient(#faf6ea, #f6f6f6);
-	}
 	.home-head {
 		height: 100rpx;
 		display: flex;
@@ -197,7 +199,7 @@
 				position: relative;
 				border-radius: 100rpx;
 				.line-select {
-					width: 60%;
+					width: var(--home-tip-line);
 					height: 100%;
 					background-color: var(--default-color);
 					position: absolute;
@@ -210,7 +212,7 @@
 		}
 	}
 	.home-record {
-		background-color: var(--model-background-color);
+		background-color: #FDFDFD;
 		.record-head {
 			display: flex;
 			justify-content: space-between;

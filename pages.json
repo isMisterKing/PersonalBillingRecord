@@ -4,9 +4,7 @@
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "",
-				"backgroundColor": "#FAFAFA",
-				"navigationBarBackgroundColor": "#faf6ea",
-				"titleImage": "static/icon/qrcode_default_grid_scan_line.png"
+				"backgroundColor": "#FAFAFA"
 			}
 		}
 	    ,{
@@ -14,7 +12,8 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#fafafa"
             }
             
         }
@@ -42,7 +41,7 @@
             {
                 "navigationBarTitleText": "",
                 "enablePullDownRefresh": false,
-				"backgroundColor": "#fafbf8"
+				"navigationBarBackgroundColor": "#fafafa"
             }
             
         }
@@ -50,7 +49,7 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarBackgroundColor": "#faf6ea",
 		"backgroundColor": "#F8F8F8"
 	},
 	"uniIdRouter": {},

@@ -1,0 +1,13 @@
+{
+  "hash": "d51c34ad",
+  "browserHash": "a5108fbb",
+  "optimized": {
+    "echarts": {
+      "src": "../../node_modules/echarts/index.js",
+      "file": "echarts.js",
+      "fileHash": "bdff259f",
+      "needsInterop": false
+    }
+  },
+  "chunks": {}
+}

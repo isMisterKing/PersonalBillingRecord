@@ -1,0 +1,56 @@
+.uni-calendar-item--isDay {
+	background-color: #57DD93 !important;
+}
+.uni-calendar-item__weeks-box {
+	display: block !important;
+}
+.uni-calendar-item__weeks-box-item {
+	width: 100% !important;
+	height: 90rpx !important;
+}
+.uni-calendar-item__weeks-box-circle {
+	display: none !important;
+}
+.uni-calendar-item--extra {
+	width: calc(100% - 16rpx);
+	height: calc(100% - 16rpx);
+	position: absolute;
+	top: 8rpx;
+	left: 8rpx;
+	border-radius: 16rpx;
+	background-color: #FEC730;
+	opacity: 0.5;
+}
+.uni-calendar-item--extra span {
+	display: none !important;
+}
+.uni-calendar-item--checked {
+	background-color: transparent !important;
+}
+.uni-calendar-item__weeks-box-item>.uni-calendar-item--checked {
+	border: 4rpx #FEC730 solid;
+	border-radius: 16rpx;
+	padding: 16rpx;
+	color: #FEC730 !important;
+}
+
+/* 图表页面uni-ui样式自定义 */
+.chart-date .uni-calendar__box {
+	display: none;
+}
+.chart-date .uni-calendar__backtoday {
+	display: none;
+}
+.chart-date .uni-calendar__header-text {
+	margin: 0 160rpx;
+}
+.chart-date .uni-calendar__content {
+	background-color: transparent !important;
+}
+.chart-date .uni-calendar__header {
+	border: 0 !important;
+}
+.chart-date .uni-calendar__header-btn {
+	width: 12rpx !important;
+	height: 12rpx !important;
+}
