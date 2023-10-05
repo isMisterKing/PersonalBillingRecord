@@ -1,7 +1,7 @@
 <template>
 	<view class="title">
 		<tab-change :list="tabList" @change="changeTab"></tab-change>
-		<i class="iconfont icon-chahao"></i>
+		<i class="iconfont icon-chahao title-clear"></i>
 	</view>
 	<view class="calendar card">
 		<uni-calendar :lunar="false" @change="clickCalendar" :selected="calendarSelected"></uni-calendar>
@@ -80,13 +80,14 @@
 		background-image: unset;
 		background-color: var(--background-color);
 		height: 100%;
+		padding: 0 50rpx;
 	}
 	.title {
 		display: flex;
 		justify-content: center;
 		position: relative;
 		margin-bottom: 30rpx;
-		i {
+		&-clear {
 			position: absolute;
 			top: 50%;
 			left: 0;

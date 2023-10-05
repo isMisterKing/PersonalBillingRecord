@@ -10,7 +10,7 @@
 	</view>
 	<!-- 卡片 -->
 	<swiper class="home-swiper">
-		<swiper-item v-for="item in cardList" :key="item.index">
+		<swiper-item class="home-swiper-item" v-for="item in cardList" :key="item.index">
 			<view class="swiper-card">
 				<view class="card-title">{{ item.title }}</view>
 				<view class="card-content">
@@ -34,7 +34,7 @@
 	<!-- 菜单 -->
 	<view class="home-nav">
 		<view class="nav-item" v-for="(item, index) in nvaList" :key="index">
-			<img :src="`../../static/icon/${item.iconPath}`">
+			<image :src="`../../static/icon/${item.iconPath}`"></image>
 			<span>{{ item.label }}</span>
 		</view>
 	</view>
@@ -54,28 +54,20 @@
 		</view>
 	</view>
 	<!-- 记录 -->
-	<view class="home-record card">
-		<view class="record-head">
-			<view class="record-head-label">
-				<span>收支记录</span>
-			</view>
-			<view class="record-head-right">
-				<i class="iconfont icon-youjiantou1"></i>
-			</view>
-		</view>
-		<scroll-view class="record-list" scroll-y="true" scroll-top="100">
-			<record-item v-for="item in recordList" :option="item"></record-item>
-		</scroll-view>
-	</view>
+	<list-group @clickHeader="clickHeader" label="收支记录">
+		<record-item v-for="item in recordList" :option="item"></record-item>
+	</list-group>
 </template>
 
 <script>
 	import * as OPTION from '../../src/common/option.js'
 	import recordItem from '../../src/components/recordItem.vue'
+	import listGroup from '../../src/components/listGroup.vue'
 	
 	export default {
 		components: {
-			recordItem
+			recordItem,
+			listGroup
 		},
 		data() {
 			return {
@@ -93,8 +85,9 @@
 			}
 		},
 		onLoad() {
+			const vm = this
 			this.$nextTick(() => {
-				const dom = document.querySelector('.home-tips')
+				const dom = vm.$refs.homeTips.$el
 				dom.style.setProperty('--home-tip-line', '60%')
 			})
 		},
@@ -109,17 +102,30 @@
 				uni.navigateTo({
 					url: '/pages/calendar/calendar?name=wangkai&age=18'
 				})
+			},
+			clickHeader () {
+				
 			}
 		}
 	}
 </script>
 
 <style lang="less">
+	page {
+		background-image: linear-gradient(#faf6ea, #f6f6f6);
+	}
+	.home-nav,
+	.home-tips {
+		margin: 0 50rpx;
+	}
 	.home-head {
+		padding: 100rpx 50rpx 0;
 		height: 100rpx;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		background-image: url('../../static/icon/qrcode_default_grid_scan_line.png');
+		background-size: 100%;
 		.head-left {
 			margin-left: 20rpx;
 		}
@@ -134,6 +140,10 @@
 	}
 	.home-swiper {
 		height: 360rpx;
+		.home-swiper-item {
+			box-sizing: border-box;
+			padding: 0 50rpx;
+		}
 	}
 	.swiper-card {
 		height: 100%;
@@ -145,7 +155,7 @@
 		.card-title,
 		.content-label,
 		.card-detail {
-			font-size: 14rpx;
+			font-size: 24rpx;
 		}
 		.card-title {
 			margin-bottom: 56rpx;
@@ -171,8 +181,9 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			img {
+			image {
 				width: 60rpx;
+				height: 60rpx;
 			}
 		}
 	}
@@ -183,7 +194,7 @@
 		box-sizing: border-box;
 		margin-bottom: 30rpx;
 		padding: 28rpx;
-		font-size: 12rpx;
+		font-size: 24rpx;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -209,25 +220,6 @@
 		}
 		.tips-right {
 			width: 46rpx;
-		}
-	}
-	.home-record {
-		background-color: #FDFDFD;
-		.record-head {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			margin-bottom: 30rpx;
-			&-label {
-				font-weight: 700;
-				font-size: 28rpx;
-			}
-			&-right {
-				width: 46rpx;
-			}
-		}
-		.record-list {
-			height: 600rpx;
 		}
 	}
 </style>

@@ -1,5 +1,5 @@
 <template>
-	<div id="echarts" style="width: 100%; height: 100%;"></div>
+	<div id="echarts" ref="echarts" style="width: 100%; height: 100%;"></div>
 </template>
 
 <script>
@@ -13,7 +13,7 @@
 		},
 		methods: {
 			initCharts () {
-				const dom = document.getElementById('echarts')
+				const dom = this.$refs.echarts
 				const myChart = echarts.init(dom)
 				myChart.setOption(this.option)
 			},

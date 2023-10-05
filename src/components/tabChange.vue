@@ -42,15 +42,24 @@
 		padding: 10rpx;
 		font-size: 30rpx;
 		border-radius: 10rpx;
-		span {
-			padding: 10rpx 30rpx;
-			border-radius: 10rpx;
-			color: var(--font-assist-color);
-		}
 		.active {
 			background-color: #FFF;
 			font-weight: 700;
 			color: var(--font-title-color);
 		}
 	}
+	// #ifdef MP-WEIXIN
+	.tab label {
+		padding: 10rpx 30rpx;
+		border-radius: 10rpx;
+		color: var(--font-assist-color);
+	}
+	// endif
+	// #ifdef H5
+	.tab span {
+		padding: 10rpx 30rpx;
+		border-radius: 10rpx;
+		color: var(--font-assist-color);
+	}
+	// endif
 </style>

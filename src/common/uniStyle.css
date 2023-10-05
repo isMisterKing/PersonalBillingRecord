@@ -19,11 +19,14 @@
 	left: 8rpx;
 	border-radius: 16rpx;
 	background-color: #FEC730;
+	color: #FEC730 !important;
 	opacity: 0.5;
 }
+/* #ifdef H5 */
 .uni-calendar-item--extra span {
 	display: none !important;
 }
+/* #endif */
 .uni-calendar-item--checked {
 	background-color: transparent !important;
 }

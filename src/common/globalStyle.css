@@ -33,8 +33,9 @@ page {
 	--model-background-color: #F9F9F9;
 	--background-color: #FAFAFA;
 	
-	padding: 0 50rpx;
-	background-image: linear-gradient(#faf6ea, #f6f6f6);
+	/* #ifdef MP-WEIXIN */
+	box-sizing: border-box;
+	/* #endif */
 }
 
 .card {

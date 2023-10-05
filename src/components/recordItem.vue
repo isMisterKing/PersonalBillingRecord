@@ -54,7 +54,7 @@
 					font-weight: 700;
 				}
 				&-date {
-					font-size: 14rpx;
+					font-size: 18rpx;
 					color: #A7A7A7;
 				}
 			}
@@ -68,7 +68,7 @@
 				font-weight: 700;
 			}
 			&-type {
-				font-size: 14rpx;
+				font-size: 18rpx;
 				color: #A7A7A7;
 			}
 		}
