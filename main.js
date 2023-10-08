@@ -3,6 +3,8 @@ import App from './App'
 import './src/common/globalStyle.css'
 import './src/common/uniStyle.css'
 
+import { myRequest } from './util/API.js'
+
 // #ifndef VUE3
 import Vue from 'vue'
 import './uni.promisify.adaptor'
@@ -18,6 +20,11 @@ app.$mount()
 import { createSSRApp } from 'vue'
 export function createApp() {
   const app = createSSRApp(App)
+  
+  // *** 全局挂载 ***
+  app.config.globalProperties.$myRequest = myRequest
+  // ***************
+  
   return {
     app
   }
